@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeout&SetInterval</title>
+    <link rel="stylesheet" href="time.css">
+</head>
+<body>
+    <div class="main">
+        <div class="heading">
+            <h1>Hello, Indranil</h1>
+            <p id="print">10:23:34 PM</p>
+        </div>
+        <div class="button-div">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+    
+    </div>
+</body>
+<script>
+    function createElement(val){
+        document.querySelector('#print').innerHTML = val;
+
+    }
+    function startPrint(){
+        let time = new Date();
+        let timeval = time.toLocaleTimeString('en-US');
+        createElement(timeval);
+    }
+    
+    let intervalst = null;
+    let startbutton = document.querySelector('#start')
+    startbutton.addEventListener('click', function(e){
+        if(intervalst == null){
+            intervalst = setInterval(startPrint, 1000);
+        }
+        
+    })
+   
+    let stopbutton = document.querySelector('#stop')
+    stopbutton.addEventListener('click', (e)=>{
+        clearInterval(intervalst); 
+        intervalst = null;
+    })
+    // let time = new Date();
+    // console.log(time.toLocaleTimeString('en-US'))
+</script>
+</html>
